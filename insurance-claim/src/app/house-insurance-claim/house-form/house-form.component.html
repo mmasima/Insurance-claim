@@ -1,0 +1,77 @@
+<ion-header style="background-color: #b41818;">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goBack()" defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add House Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen scroll-y="true">
+  <div class="form-container">
+    <form (ngSubmit)="saveHouse(houseForm)" #houseForm="ngForm">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>House Details</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" [(ngModel)]="house.address" name="address" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-input type="text" [(ngModel)]="house.description" name="description" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Geolocation</ion-label>
+            <ion-input type="text" [(ngModel)]="house.geolocation" name="geolocation" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Upload Damage Images</ion-label>
+          </ion-item>
+
+          <div *ngFor="let image of house.damageImages; let i = index">
+            <ion-item *ngIf="image.url">
+              <div class="image-preview-container">
+                <div class="image-info">
+                  <ion-img [src]="image.url" class="image-preview-small"></ion-img>
+                  <ion-button color="danger" (click)="removeImage(i)">Remove</ion-button>
+                </div>
+                <div class="image-description">
+                  <ion-label>Image {{i + 1}}</ion-label>
+                  <ion-item>
+                    <ion-label position="floating">Image Description</ion-label>
+                    <ion-input [(ngModel)]="image.description" name="description{{i}}"></ion-input>
+                  </ion-item>
+                </div>
+              </div>
+            </ion-item>
+
+            <ion-item *ngIf="!image.url">
+              <input type="file" (change)="onFileSelected($event, i)" accept="image/*" />
+            </ion-item>
+          </div>
+
+          <ion-scroll scrollX="true" style="width: 100%; overflow: auto;">
+            <div class="image-scroll-container">
+              <div *ngFor="let image of house.damageImages" class="image-item">
+                <ion-img *ngIf="image.url" [src]="image.url" class="image-thumbnail"></ion-img>
+              </div>
+            </div>
+          </ion-scroll>
+
+          <ion-button expand="full" (click)="addImage()" color="medium">Add image</ion-button>
+
+          <ion-button expand="full" type="submit" [disabled]="!houseForm.valid">
+            Save House
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

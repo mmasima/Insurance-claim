@@ -1,0 +1,33 @@
+<ion-header style="background-color: #b41818;">
+  <ion-toolbar>
+    <ion-title>House List</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen scroll-y="true">
+  <!-- Button to navigate to the House Form -->
+  <ion-button expand="full" color="primary" routerLink="/house-form">
+    Add New House
+  </ion-button>
+
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let house of houses">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ house.address }}</ion-card-title>
+            <ion-card-subtitle>{{ house.description }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-button expand="full" color="secondary" (click)="viewHouseDetails(house)">
+              View Details
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

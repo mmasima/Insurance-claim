@@ -1,0 +1,35 @@
+.centered-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  
+  .responsive-card {
+    width: 90vw;          
+    max-width: 400px;     
+    padding: 16px;        
+  }
+  
+  .center-text {
+    text-align: center;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .success-message {
+    color: green;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  

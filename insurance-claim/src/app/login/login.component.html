@@ -1,0 +1,27 @@
+<ion-content>
+  <div class="centered-card">
+    <ion-card class="responsive-card">
+      <ion-card-header>
+        <ion-card-title class="center-text">Sign In</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password" required></ion-input>
+        </ion-item>
+        <ion-button expand="block" color="primary" (click)="signIn()">Sign In</ion-button>
+        <div *ngIf="message" [ngClass]="{'error-message': isError, 'success-message': !isError}">
+          {{ message }}
+        </div>
+        <div class="signup-link">
+          <p>Don't have an account?</p>
+          <ion-button fill="clear" color="secondary" (click)="goToSignUp()">Sign Up</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
