@@ -112,11 +112,7 @@ docker-compose up -d
 
 The API will be available at `http://localhost:8080`
 
-## Environment Configuration
-
-Create a `.env` file in the root directory:
-```env
-API_URL=http://localhost:8080/api
+ttp://localhost:8080/api
 ```
 
 ## Available Scripts
